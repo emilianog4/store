@@ -21,6 +21,7 @@
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.11.5",
     "ngx-paypal": "^9.0.0",
+    "ngx-spinner": "^13.1.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

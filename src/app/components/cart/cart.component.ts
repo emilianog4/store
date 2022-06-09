@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CartItemModel } from 'src/app/models/cart-item-model';
 import { Product } from 'src/app/models/product';
 import { MessageService } from 'src/app/services/message.service';
