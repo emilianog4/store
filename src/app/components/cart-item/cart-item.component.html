@@ -1,0 +1,5 @@
+<p>
+  <strong> {{ cartItem.productName }} </strong> 
+  <strong> ( {{ cartItem.quantity }} Units ) </strong>
+  <strong> $ {{ cartItem.quantity * cartItem.productPrice | number: '1.1-2' }} </strong>
+</p>

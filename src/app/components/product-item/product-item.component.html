@@ -1,0 +1,12 @@
+<div class="card text-center mb-3" style="width: 18rem;">
+    <img [src]="product.imageUrl" class="card-img-top" alt="imagen del juego">
+    <div class="card-body">
+      <h5 class="card-title"><strong>{{ product.name }} </strong></h5>
+      <p class="card-text">{{ product.description }}</p>
+      <p class="card-text">$ {{ product.price }} </p>
+
+      <button class="btn btn-outline-success" (click)="addToCart()">
+         <i class="fas fa-cart-plus"></i>  Add to cart
+      </button>
+    </div>
+  </div>
