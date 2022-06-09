@@ -14,6 +14,7 @@ import { ModalComponent } from './components/modal/modal.component';
 
 //EXTERNAL
 import { NgxPayPalModule } from 'ngx-paypal';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     BrowserModule,
     AppRoutingModule,
     NgxPayPalModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

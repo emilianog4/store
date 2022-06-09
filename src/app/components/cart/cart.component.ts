@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { CartItemModel } from 'src/app/models/cart-item-model';
 import { Product } from 'src/app/models/product';
@@ -19,7 +20,9 @@ export class CartComponent implements OnInit {
 
   constructor(
     private messageService: MessageService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -62,6 +65,7 @@ export class CartComponent implements OnInit {
         layout: 'vertical',
       },
       onApprove: (data, actions) => {
+        this.spinner.show();
         console.log(
           'onApprove - transaction was approved, but not authorized',
           data,
@@ -77,8 +81,13 @@ export class CartComponent implements OnInit {
       onClientAuthorization: (data) => {
         console.log(
           'onClientAuthorization - you should probably inform your server about completed transaction at this point',
-          JSON.stringify(data)
+          JSON.stringify(data));
+          this.openModal(
+            data.purchase_units[0].items,
+            data.purchase_units[0].amount.value
         );
+        this.emptyCart();
+        this.spinner.hide();
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
@@ -148,9 +157,9 @@ export class CartComponent implements OnInit {
     return items;
   }
 
-  openModal(items: any, amount: any): void{
+  openModal(items: any, amount: any): void {
     const modalRef = this.modalService.open(ModalComponent);
     modalRef.componentInstance.items = items;
-    modalRef.componentInstance.amount= amount;
+    modalRef.componentInstance.amount = amount;
   }
 }
